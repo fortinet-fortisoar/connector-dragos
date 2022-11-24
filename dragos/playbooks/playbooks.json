@@ -1,0 +1,530 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Dragos - 1.0.0",
+      "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
+      "visible": true,
+      "image": "playbook.png",
+      "recordTags": [
+        "Dragos",
+        "dragos"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "b826fb81-fde3-47db-a73c-eb3bd12971d0",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+          "name": "Get All Indicators",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ada2e6b5-0c25-495e-a1a8-75419a8d24a8",
+          "steps": [
+            {
+              "uuid": "ada2e6b5-0c25-495e-a1a8-75419a8d24a8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "2fd9a583-a08d-4f30-84fd-5d2c1412b9a9",
+                "title": "Dragos: Get All Indicators",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "6f964485-012d-4025-bcb7-dcb145274e9c",
+              "@type": "WorkflowStep",
+              "name": "Get All Indicators",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": {
+                  "type": "IP",
+                  "page_size": 500,
+                  "page": 1,
+                  "serial": "",
+                  "tags": "",
+                  "updated_after": "",
+                  "value": ""
+                },
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_all_indicators",
+                "operationTitle": "Get All Indicators",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "2c03062f-47ec-41f6-a40d-5f18dcd1e1cd",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Indicators",
+              "sourceStep": "/api/3/workflow_steps/ada2e6b5-0c25-495e-a1a8-75419a8d24a8",
+              "targetStep": "/api/3/workflow_steps/6f964485-012d-4025-bcb7-dcb145274e9c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "bba10d70-a43f-4961-bf14-e252e2830c78",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieves a list of stix2 bundle of indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+          "name": "Get Stix2 Indicators",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/04fa482a-d4dc-4c4a-9a51-db1f5f0e2422",
+          "steps": [
+            {
+              "uuid": "04fa482a-d4dc-4c4a-9a51-db1f5f0e2422",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "247cae48-6ac4-4dde-bfb4-99fa57cc876b",
+                "title": "Dragos: Get Stix2 Indicators",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "0970899f-0729-4e9b-854e-62d2376d7f38",
+              "@type": "WorkflowStep",
+              "name": "Get Stix2 Indicators",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": {
+                  "type": "IP",
+                  "page_size": 500,
+                  "page": 1,
+                  "serial": "",
+                  "tags": "",
+                  "updated_after": "",
+                  "value": ""
+                },
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_stix2_indicators",
+                "operationTitle": "Get Stix2 Indicators",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "0e39b099-8666-4afb-b0a8-a7690c41a613",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Stix2 Indicators",
+              "sourceStep": "/api/3/workflow_steps/04fa482a-d4dc-4c4a-9a51-db1f5f0e2422",
+              "targetStep": "/api/3/workflow_steps/0970899f-0729-4e9b-854e-62d2376d7f38"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6e07b1b4-e1dc-4b30-b4c6-548ee615cf34",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieves a list of cached stix2 bundle of the last 12 months of indicators from Dragos. Note: This action is not available to trial users.",
+          "name": "Get Cached Stix2 Indicators",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2912af42-c37c-41e1-906b-89ba534c0682",
+          "steps": [
+            {
+              "uuid": "2912af42-c37c-41e1-906b-89ba534c0682",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "93e12b1a-da29-4b7d-8c09-a5d81f965f3c",
+                "title": "Dragos: Get Cached Stix2 Indicators",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ba593be0-afd5-4e82-b3a2-c6fd28ce3c89",
+              "@type": "WorkflowStep",
+              "name": "Get Cached Stix2 Indicators",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_cached_stix2_indicators",
+                "operationTitle": "Get Cached Stix2 Indicators",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "a048f76f-d665-4983-9cc7-798ad2404e3d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Cached Stix2 Indicators",
+              "sourceStep": "/api/3/workflow_steps/2912af42-c37c-41e1-906b-89ba534c0682",
+              "targetStep": "/api/3/workflow_steps/ba593be0-afd5-4e82-b3a2-c6fd28ce3c89"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "6ef9430a-813a-4be5-b46f-fe4eec33e81b",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieves list of all products from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
+          "name": "Get All Products",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/53c13ce2-d466-4b87-955f-8bffa3aeff0f",
+          "steps": [
+            {
+              "uuid": "53c13ce2-d466-4b87-955f-8bffa3aeff0f",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "e7a43aca-a674-4b92-bc59-668022313610",
+                "title": "Dragos: Get All Products",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a9194b7e-4cc8-40d0-adcc-c0d87a6c0fad",
+              "@type": "WorkflowStep",
+              "name": "Get All Products",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": {
+                  "sort_by": "Release Date",
+                  "sort_desc": "ASC",
+                  "page": 1,
+                  "page_size": 500,
+                  "serials": "",
+                  "indicator": "",
+                  "updated_after": ""
+                },
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_all_products",
+                "operationTitle": "Get All Products",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "48107249-d7da-4c08-9439-5105113728b4",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Products",
+              "sourceStep": "/api/3/workflow_steps/53c13ce2-d466-4b87-955f-8bffa3aeff0f",
+              "targetStep": "/api/3/workflow_steps/a9194b7e-4cc8-40d0-adcc-c0d87a6c0fad"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "cd6f3dab-22d6-4524-98da-0484b06512fc",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieve details of product from Dragos based on various parameters such as product serial number and details of product metadata, CSV file or STIX2.0 JSON.",
+          "name": "Get Product Details",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/1f5e91c8-514a-44b5-a3dc-21a524ef4d12",
+          "steps": [
+            {
+              "uuid": "1f5e91c8-514a-44b5-a3dc-21a524ef4d12",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "3b7998fb-a0fb-49ab-bc56-b3cedc1c1eb9",
+                "title": "Dragos: Get Product Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "d236961f-6b6c-4ec8-91b3-51c47ffac36c",
+              "@type": "WorkflowStep",
+              "name": "Get Product Details",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": {
+                  "details_of": "Product Metadata",
+                  "id": "id1"
+                },
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_product_details",
+                "operationTitle": "Get Product Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "5bb8c862-3db0-41db-a610-bf346b4d9cb5",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Product Details",
+              "sourceStep": "/api/3/workflow_steps/1f5e91c8-514a-44b5-a3dc-21a524ef4d12",
+              "targetStep": "/api/3/workflow_steps/d236961f-6b6c-4ec8-91b3-51c47ffac36c"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "dd379554-5cfc-4aab-862e-d0d3808f9d65",
+          "collection": "/api/3/workflow_collections/d3522e1b-17d5-4964-96f2-aa6f9ed654cf",
+          "triggerLimit": null,
+          "description": "Retrieves list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
+          "name": "Get All Tags",
+          "tag": "#Dragos",
+          "recordTags": [
+            "Dragos",
+            "dragos"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/73218ee0-46f9-480b-aa29-8bbeedc4feba",
+          "steps": [
+            {
+              "uuid": "73218ee0-46f9-480b-aa29-8bbeedc4feba",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "9d4a230d-06fb-4104-a631-5481fdb3aa23",
+                "title": "Dragos: Get All Tags",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "aa9c9b75-4990-4d32-ae3a-2fd326208527",
+              "@type": "WorkflowStep",
+              "name": "Get All Tags",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos",
+                "config": "",
+                "params": {
+                  "page": 1,
+                  "page_size": 100,
+                  "tag_type":  ""
+                },
+                "version": "1.0.0",
+                "connector": "dragos",
+                "operation": "get_all_tags",
+                "operationTitle": "Get All Tags",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "f9399d5d-8d58-4f34-967a-c12b8152ec4c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Tags",
+              "sourceStep": "/api/3/workflow_steps/73218ee0-46f9-480b-aa29-8bbeedc4feba",
+              "targetStep": "/api/3/workflow_steps/aa9c9b75-4990-4d32-ae3a-2fd326208527"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
