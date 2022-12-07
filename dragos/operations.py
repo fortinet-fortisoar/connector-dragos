@@ -32,7 +32,7 @@ def make_request(config, endpoint, method='GET'):
         'accept': '*/*',
         'API-Token': '{0}'.format(api_token),
         'API-Secret': '{0}'.format(api_secret)
-    }  # need to test this
+    }
     try:
         response = requests.request(method=method, url=url, headers=header, verify=verify_ssl)
         if response.ok:
@@ -90,13 +90,13 @@ def build_query(params, query_params):
 
 def get_all_indicators(config, params):
     query_params = build_query(params, indicator_params)
-    endpoint = 'indicators' + ('?' + query_params) if query_params else ''
+    endpoint = 'indicators' + (('?' + query_params) if query_params else '')
     return make_request(config, endpoint)
 
 
 def get_stix2_indicators(config, params):
     query_params = build_query(params, indicator_params)
-    endpoint = 'indicators.stix2' + ('?' + query_params) if query_params else ''
+    endpoint = 'indicators.stix2' + (('?' + query_params) if query_params else '')
     return make_request(config, endpoint)
 
 
@@ -107,7 +107,7 @@ def get_cached_stix2_indicators(config, params):
 
 def get_all_products(config, params):
     query_params = build_query(params, product_params)
-    endpoint = 'products' + ('?' + query_params) if query_params else ''
+    endpoint = 'products' + (('?' + query_params) if query_params else '')
     return make_request(config, endpoint)
 
 
@@ -120,7 +120,7 @@ def get_product_details(config, params):
 
 def get_all_tags(config, params):
     query_params = build_query(params, tag_params)
-    endpoint = 'tags' + ('?' + query_params) if query_params else ''
+    endpoint = 'tags' + (('?' + query_params) if query_params else '')
     return make_request(config, endpoint)
 
 
