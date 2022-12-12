@@ -7,8 +7,10 @@
 from connectors.core.connector import get_logger, ConnectorError
 from .constants import *
 import requests
-from requests import exceptions as req_exceptions
+from integrations.crudhub import make_request
+from requests import request, post, exceptions as req_exceptions
 import arrow
+from django.conf import settings
 
 logger = get_logger('dragos')
 
@@ -24,7 +26,7 @@ def get_config(config):
     return base_url, api_token, api_secret, verify_ssl
 
 
-def make_request(config, endpoint, method='GET'):
+def make_rest_call(config, endpoint, method='GET'):
     base_url, api_token, api_secret, verify_ssl = get_config(config)
     url = base_url + endpoint
     logger.debug("Requested URL: {0}".format(url))
@@ -39,7 +41,7 @@ def make_request(config, endpoint, method='GET'):
             if 'json' in response.headers.get('Content-Type').lower():
                 return response.json()
             else:
-                return response.text
+                return response
         else:
             logger.error(response.text)
             if response.status_code == 401:
@@ -91,37 +93,78 @@ def build_query(params, query_params):
 def get_all_indicators(config, params):
     query_params = build_query(params, indicator_params)
     endpoint = 'indicators' + (('?' + query_params) if query_params else '')
-    return make_request(config, endpoint)
+    return make_rest_call(config, endpoint)
 
 
 def get_stix2_indicators(config, params):
     query_params = build_query(params, indicator_params)
     endpoint = 'indicators.stix2' + (('?' + query_params) if query_params else '')
-    return make_request(config, endpoint)
+    return make_rest_call(config, endpoint)
 
 
 def get_cached_stix2_indicators(config, params):
     endpoint = 'indicators/stix2'
-    return make_request(config, endpoint)
+    return make_rest_call(config, endpoint)
+
+
+def _upload_file_to_cyops(file_name, file_content, file_type):
+    try:
+        # Conditional import based on the FortiSOAR version.
+        try:
+            from integrations.crudhub import make_file_upload_request
+            response = make_file_upload_request(file_name, file_content, 'application/octet-stream')
+        except:
+            from cshmac.requests import HmacAuth
+            from integrations.crudhub import maybe_json_or_raise
+
+            url = settings.CRUD_HUB_URL + '/api/3/files'
+            auth = HmacAuth(url, 'POST', settings.APPLIANCE_PUBLIC_KEY,
+                            settings.APPLIANCE_PRIVATE_KEY,
+                            settings.APPLIANCE_PUBLIC_KEY.encode('utf-8'))
+            files = {'file': (file_name, file_content, file_type, {'Expire': 0})}
+            response = post(url, auth=auth, files=files, verify=False)
+            response = maybe_json_or_raise(response)
+
+        file_id = response['@id']
+        file_description = 'Product Indicators retrieved from Dragos'
+        attach_response = make_request('/api/3/attachments', 'POST',
+                                       {'name': file_name, 'file': file_id, 'description': file_description})
+        logger.info('attach file complete: {0}'.format(attach_response))
+        return attach_response
+    except Exception as err:
+        logger.exception('An exception occurred {0}'.format(str(err)))
+        raise ConnectorError('An exception occurred {0}'.format(str(err)))
+
+
+def _create_cyops_attachment(file_name, content):
+    attachment_name = file_name
+    file_resp = _upload_file_to_cyops(attachment_name, content, 'application/octet-stream')
+    return file_resp
 
 
 def get_all_products(config, params):
     query_params = build_query(params, product_params)
     endpoint = 'products' + (('?' + query_params) if query_params else '')
-    return make_request(config, endpoint)
+    return make_rest_call(config, endpoint)
 
 
 def get_product_details(config, params):
     details_of = params.get('details_of')
     product_id = params.get('id')
     endpoint = ENDPOINT_MAPPING.get(details_of).format(id=product_id)
-    return make_request(config, endpoint)
+    resp = make_rest_call(config, endpoint)
+    if params.get("details_of") == "CSV File" and params.get("attachment") is True:
+        file_content = resp.content
+        file_name = "dragos-product.csv"
+        return _create_cyops_attachment(file_name=file_name, content=file_content)
+    else:
+        return resp
 
 
 def get_all_tags(config, params):
     query_params = build_query(params, tag_params)
     endpoint = 'tags' + (('?' + query_params) if query_params else '')
-    return make_request(config, endpoint)
+    return make_rest_call(config, endpoint)
 
 
 def _check_health(config):

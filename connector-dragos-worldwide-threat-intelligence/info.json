@@ -1,9 +1,10 @@
+
 {
-  "name": "dragos",
-  "label": "Dragos",
+  "name": "dragos-worldview-threat-intel",
+  "label": "Dragos WorldView Threat Intelligence",
   "version": "1.0.0",
   "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
-  "publisher": "Community",
+  "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
   "category": "Threat Intelligence",
@@ -145,7 +146,37 @@
         }
       ],
       "output_schema": {
-
+        "indicators": [
+          {
+            "id": "",
+            "value": "",
+            "indicator_type": "",
+            "category": "",
+            "comment": "",
+            "first_seen": "",
+            "last_seen": "",
+            "updated_at": "",
+            "confidence": "",
+            "kill_chain": "",
+            "uuid": "",
+            "status": "",
+            "severity": "",
+            "threat_groups": [],
+            "attack_techniques": [],
+            "ics_attack_techniques": [],
+            "pre_attack_techniques": [],
+            "products": [
+              {
+                "serial": ""
+              }
+            ],
+            "activity_groups": []
+          }
+        ],
+        "total": "",
+        "page": "",
+        "page_size": "",
+        "total_pages": ""
       }
     },
     {
@@ -239,7 +270,12 @@
           "placeholder": "tag1, tag2"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "type": "",
+        "id": "",
+        "spec_version": "",
+        "objects": []
+      }
     },
     {
       "operation": "get_cached_stix2_indicators",
@@ -344,7 +380,32 @@
           "name": "indicator"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "products": [
+          {
+            "tlp_level": "",
+            "title": "",
+            "executive_summary": "",
+            "updated_at": "",
+            "threat_level": "",
+            "serial": "",
+            "ioc_count": "",
+            "tags": [
+              {
+                "text": "",
+                "tag_type": ""
+              }
+            ],
+            "release_date": "",
+            "type": "",
+            "report_link": ""
+          }
+        ],
+        "total": "",
+        "page": "",
+        "page_size": "",
+        "total_pages": ""
+      }
     },
     {
       "operation": "get_product_details",
@@ -365,10 +426,24 @@
             "CSV File",
             "STIX2.0 JSON"
           ],
+          "onchange": {
+            "CSV File": [
+              {
+                "title": "Add as Attachment",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "checkbox",
+                "value": false,
+                "name": "attachment",
+                "description": "Add as Attachment in FortiSOAR"
+              }
+            ]
+          },
           "name": "details_of",
           "value": "Product Metadata",
           "tooltip": "Retrieve the details of product on selecting.",
-          "description": "Retrieve the details of product. You can choose from,  Product Metadata: Returns the metadata of a product. CSV File: Returns the CSV file for the indicators related to a given serial.  STIX2.0 JSON: Returns the STIX2.0 JSON bundle for the indicators related to a given serial."
+          "description": "Retrieve the details of product. You can choose from, Product Metadata: Returns the metadata of a product. CSV File: Returns the CSV file for the indicators related to a given serial.  STIX2.0 JSON: Returns the STIX2.0 JSON bundle for the indicators related to a given serial."
         },
         {
           "title": "Product Serial Number",
@@ -380,7 +455,40 @@
           "description": "Specify product serial number for which you want to retrieve details."
         }
       ],
-      "output_schema": {}
+      "conditional_output_schema": [
+        {
+          "condition": "{{details_of === 'Product Metadata'}}",
+          "output_schema": {
+            "tlp_level": "",
+            "title": "",
+            "executive_summary": "",
+            "updated_at": "",
+            "threat_level": "",
+            "serial": "",
+            "ioc_count": "",
+            "tags": [
+              {
+                "text": "",
+                "tag_type": ""
+              }
+            ],
+            "release_date": "",
+            "type": "",
+            "report_link": "",
+            "ioc_csv_link": "",
+            "ioc_stix2_link": ""
+          }
+        },
+        {
+          "condition": "{{details_of === 'STIX2.0 JSON'}}",
+          "output_schema": {
+            "type": "",
+            "id": "",
+            "spec_version": "",
+            "objects": []
+          }
+        }
+      ]
     },
     {
       "operation": "get_all_tags",
@@ -422,7 +530,24 @@
           "description": "Specify tag type for which tags you want to retrieve."
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "content": [
+          {
+            "text": "",
+            "special_tag_type": "",
+            "special_tag": {
+              "description": "",
+              "external_uuid": "",
+              "long_name": "",
+              "url": ""
+            }
+          }
+        ],
+        "total": "",
+        "page": "",
+        "page_size": "",
+        "total_pages": ""
+      }
     }
   ]
 }

@@ -16,7 +16,7 @@ PARAM_MAPPING = {
     "Threat": "threat",
     "TLP": "tlp",
     "Release Date": "release_date",
-    "ASC": "true",  # need to check
+    "ASC": "true",
     "DESC": "false"
 
 }
