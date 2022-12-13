@@ -1,6 +1,6 @@
 
 {
-  "name": "dragos-worldview-threat-intel",
+  "name": "dragos-worldview-threat-intelligence",
   "label": "Dragos WorldView Threat Intelligence",
   "version": "1.0.0",
   "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
