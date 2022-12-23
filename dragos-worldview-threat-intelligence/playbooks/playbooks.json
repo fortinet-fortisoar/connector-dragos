@@ -237,7 +237,7 @@
                 "config": "''",
                 "params": {
                   "sort_by": "Release Date",
-                  "sort_order": "ASC",
+                  "sort_order": "Ascending",
                   "page": 1,
                   "page_size": 500
                 },

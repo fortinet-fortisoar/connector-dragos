@@ -15,9 +15,9 @@ PARAM_MAPPING = {
     "Title": "title",
     "Threat": "threat",
     "TLP": "tlp",
+    "Ascending": "false",
+    "Descending": "true",
     "Release Date": "release_date",
-    "ASC": "false",
-    "DESC": "true"
 }
 
 ENDPOINT_MAPPING = {

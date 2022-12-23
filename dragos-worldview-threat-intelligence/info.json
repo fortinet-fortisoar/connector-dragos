@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "category": "Threat Intelligence",
   "help_online": "",
@@ -57,7 +57,7 @@
       "operation": "get_all_indicators",
       "title": "Get All Indicators",
       "category": "investigation",
-      "annotation": "get_indicators",
+      "annotation": "get_all_indicators",
       "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
       "enabled": true,
       "parameters": [
@@ -132,7 +132,7 @@
           "visible": true,
           "type": "text",
           "name": "serial",
-          "placeholder": "serial1, serial2, ..."
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Tags",
@@ -141,7 +141,7 @@
           "visible": true,
           "type": "text",
           "name": "tags",
-          "placeholder": "tag1, tag2, ...",
+          "placeholder": "For e.g. tag1, tag2, ...",
           "tooltip": "List of tags",
           "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
         }
@@ -259,7 +259,7 @@
           "visible": true,
           "type": "text",
           "name": "serial",
-          "placeholder": "serial1, serial2, ..."
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Tags",
@@ -268,7 +268,7 @@
           "visible": true,
           "type": "text",
           "name": "tags",
-          "placeholder": "tag1, tag2, ...",
+          "placeholder": "For e.g. tag1, tag2, ...",
           "tooltip": "List of tags",
           "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
         }
@@ -320,13 +320,13 @@
           "visible": true,
           "type": "select",
           "options": [
-            "ASC",
-            "DESC"
+            "Ascending",
+            "Descending"
           ],
           "name": "sort_order",
-          "value": "ASC",
-          "tooltip": "Specify the sorting order to receive the results in. Valid values are ASC (ascending) or DESC (descending).",
-          "description": "Select the sorting order in which you want to sort the results. You can choose between ASC (Ascending) or DESC (descending)."
+          "value": "Ascending",
+          "tooltip": "Specify the sorting order to receive the results in.",
+          "description": "Select the sorting order in which you want to sort the results."
         },
         {
           "title": "Page Number",
@@ -369,7 +369,7 @@
           "visible": true,
           "type": "text",
           "name": "serials",
-          "placeholder": "serial1, serial2, ..."
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Indicator",
