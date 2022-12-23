@@ -2,7 +2,7 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "16ce5685-7c01-4a9a-8ff1-3034b7337830",
+      "uuid": "7166680e-8034-4370-8fdb-4a12f6382132",
       "@type": "WorkflowCollection",
       "name": "Sample - Dragos WorldView Threat Intelligence - 1.0.0",
       "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
@@ -15,8 +15,8 @@
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "6afa4f35-a9ae-4601-b67f-39d2904763ee",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
+          "uuid": "73e159ee-300b-4932-b4cf-75221de3db92",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
           "triggerLimit": null,
           "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
           "name": "Get All Indicators",
@@ -30,16 +30,16 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/5e47cf1b-9cea-43ce-aba4-b5b9e0d6656a",
+          "triggerStep": "/api/3/workflow_steps/bb1cb130-9961-47fe-b1bf-679fbc68dbbd",
           "steps": [
             {
-              "uuid": "5e47cf1b-9cea-43ce-aba4-b5b9e0d6656a",
+              "uuid": "bb1cb130-9961-47fe-b1bf-679fbc68dbbd",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "fa9fec92-97aa-4594-9879-f536c9e88901",
+                "route": "61aa1906-6e96-4d93-9e89-326dcf59717c",
                 "title": "Dragos WorldView Threat Intelligence: Get All Indicators",
                 "resources": [
                   "alerts"
@@ -59,7 +59,7 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "9ac24b63-e97e-4d78-9670-0a90ccea119f",
+              "uuid": "7f05c69e-7c4d-46ab-bc84-265dd4d4f421",
               "@type": "WorkflowStep",
               "name": "Get All Indicators",
               "description": null,
@@ -88,22 +88,22 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "ca44e9cd-1ad3-4719-baa1-01b2d8b2c319",
+              "uuid": "a9ed238a-419f-4750-8ad4-ac56655087b0",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Get All Indicators",
-              "sourceStep": "/api/3/workflow_steps/5e47cf1b-9cea-43ce-aba4-b5b9e0d6656a",
-              "targetStep": "/api/3/workflow_steps/9ac24b63-e97e-4d78-9670-0a90ccea119f"
+              "sourceStep": "/api/3/workflow_steps/bb1cb130-9961-47fe-b1bf-679fbc68dbbd",
+              "targetStep": "/api/3/workflow_steps/7f05c69e-7c4d-46ab-bc84-265dd4d4f421"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "60d84a3c-6476-47cb-b11e-d6b5492574a1",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
+          "uuid": "48f331e0-1556-4e1d-b5d3-da340e0f3890",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
           "triggerLimit": null,
           "description": "Retrieves a list of stix2 bundle of indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
-          "name": "Get Stix2 Indicators",
+          "name": "Get All Indicators In Stix2",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
             "Dragos",
@@ -114,17 +114,17 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/07a193c4-7a1f-4d9e-b3af-93a9eea0e091",
+          "triggerStep": "/api/3/workflow_steps/111c1f5f-7218-4772-b85d-fa1acf0d2078",
           "steps": [
             {
-              "uuid": "07a193c4-7a1f-4d9e-b3af-93a9eea0e091",
+              "uuid": "111c1f5f-7218-4772-b85d-fa1acf0d2078",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "a6fac6d7-369b-44bc-bb96-b1d05aadd6b1",
-                "title": "Dragos WorldView Threat Intelligence: Get Stix2 Indicators",
+                "route": "906551c0-8e57-467b-819e-aa89b669128a",
+                "title": "Dragos WorldView Threat Intelligence: Get All Indicators In Stix2",
                 "resources": [
                   "alerts"
                 ],
@@ -143,9 +143,9 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "8bf6ae63-c685-493e-9e70-c1d90859c063",
+              "uuid": "1a7bf07f-c631-4012-8e83-e4b94c5ff6c9",
               "@type": "WorkflowStep",
-              "name": "Get Stix2 Indicators",
+              "name": "Get All Indicators In Stix2",
               "description": null,
               "status": null,
               "arguments": {
@@ -158,8 +158,8 @@
                 },
                 "version": "1.0.0",
                 "connector": "dragos-worldview-threat-intelligence",
-                "operation": "get_stix2_indicators",
-                "operationTitle": "Get Stix2 Indicators",
+                "operation": "get_all_indicators_in_stix2",
+                "operationTitle": "Get All Indicators In Stix2",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -172,22 +172,22 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "6dda0290-a02a-4ef1-bf2d-5373eeab5036",
+              "uuid": "c6f87b6b-6d7c-4816-a1be-20423fe5cb1a",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get Stix2 Indicators",
-              "sourceStep": "/api/3/workflow_steps/07a193c4-7a1f-4d9e-b3af-93a9eea0e091",
-              "targetStep": "/api/3/workflow_steps/8bf6ae63-c685-493e-9e70-c1d90859c063"
+              "name": "Start-> Get All Indicators In Stix2",
+              "sourceStep": "/api/3/workflow_steps/111c1f5f-7218-4772-b85d-fa1acf0d2078",
+              "targetStep": "/api/3/workflow_steps/1a7bf07f-c631-4012-8e83-e4b94c5ff6c9"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "4494adda-b577-4a24-b665-b378105f3656",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
+          "uuid": "c3801734-39ff-426d-b339-e2810e236698",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
           "triggerLimit": null,
-          "description": "Retrieves a list of cached stix2 bundle of the last 12 months of indicators from Dragos. Note: This action is not available to trial users.",
-          "name": "Get Cached Stix2 Indicators",
+          "description": "Retrieves list of all reports from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
+          "name": "Get All Reports",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
             "Dragos",
@@ -198,17 +198,17 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/b72e6ce0-878d-4f88-8cd3-2980515f5759",
+          "triggerStep": "/api/3/workflow_steps/ba012f69-c1f8-4699-b85b-5467ce3265a7",
           "steps": [
             {
-              "uuid": "b72e6ce0-878d-4f88-8cd3-2980515f5759",
+              "uuid": "ba012f69-c1f8-4699-b85b-5467ce3265a7",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "f1cd1dcd-6129-4ef4-9ed6-2f7f78bc1c7d",
-                "title": "Dragos WorldView Threat Intelligence: Get Cached Stix2 Indicators",
+                "route": "1589e642-d105-400c-9681-e9cd13d8cca4",
+                "title": "Dragos WorldView Threat Intelligence: Get All Reports",
                 "resources": [
                   "alerts"
                 ],
@@ -227,9 +227,94 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "92690dfd-5561-475f-a9fb-6d4d7eeef955",
+              "uuid": "13a6775b-1491-4090-8ac1-5784facf4b1a",
               "@type": "WorkflowStep",
-              "name": "Get Cached Stix2 Indicators",
+              "name": "Get All Reports",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "Dragos WorldView Threat Intelligence",
+                "config": "''",
+                "params": {
+                  "sort_by": "Release Date",
+                  "sort_order": "Ascending",
+                  "page": 1,
+                  "page_size": 500
+                },
+                "version": "1.0.0",
+                "connector": "dragos-worldview-threat-intelligence",
+                "operation": "get_all_reports",
+                "operationTitle": "Get All Reports",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "5d4fc357-d823-414e-b7ca-a777733807f7",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get All Reports",
+              "sourceStep": "/api/3/workflow_steps/ba012f69-c1f8-4699-b85b-5467ce3265a7",
+              "targetStep": "/api/3/workflow_steps/13a6775b-1491-4090-8ac1-5784facf4b1a"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "4e81d586-0795-4960-acec-d8b009985d07",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
+          "triggerLimit": null,
+          "description": "Retrieves the report metadata based on the specified serial number.",
+          "name": "Get Report Metadata",
+          "tag": "#Dragos WorldView Threat Intelligence",
+          "recordTags": [
+            "Dragos",
+            "dragos-worldview-threat-intelligence"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/f0f92932-7b12-42c6-858d-f9b1f5d3df7e",
+          "steps": [
+            {
+              "uuid": "f0f92932-7b12-42c6-858d-f9b1f5d3df7e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "b6cebfc0-b459-4e32-8fe1-706aca60c060",
+                "title": "Dragos WorldView Threat Intelligence: Get Report Metadata",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "4eec8c98-bad5-4e87-9c9e-565d0d5521f0",
+              "@type": "WorkflowStep",
+              "name": "Get Report Metadata",
               "description": null,
               "status": null,
               "arguments": {
@@ -238,8 +323,8 @@
                 "params": [],
                 "version": "1.0.0",
                 "connector": "dragos-worldview-threat-intelligence",
-                "operation": "get_cached_stix2_indicators",
-                "operationTitle": "Get Cached Stix2 Indicators",
+                "operation": "get_report_metadata",
+                "operationTitle": "Get Report Metadata",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -252,22 +337,22 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "31b2cca6-c9f9-4806-bf3f-5d10f0b57df5",
+              "uuid": "097b6a86-b460-411a-8bd6-66f8fe7986df",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get Cached Stix2 Indicators",
-              "sourceStep": "/api/3/workflow_steps/b72e6ce0-878d-4f88-8cd3-2980515f5759",
-              "targetStep": "/api/3/workflow_steps/92690dfd-5561-475f-a9fb-6d4d7eeef955"
+              "name": "Start-> Get Report Metadata",
+              "sourceStep": "/api/3/workflow_steps/f0f92932-7b12-42c6-858d-f9b1f5d3df7e",
+              "targetStep": "/api/3/workflow_steps/4eec8c98-bad5-4e87-9c9e-565d0d5521f0"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "586875c6-9b96-40f7-8d98-d59d53f4465c",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
+          "uuid": "fb16fd20-7c86-4d3f-be07-e3ca418fd900",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
           "triggerLimit": null,
-          "description": "Retrieves list of all products from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
-          "name": "Get All Products",
+          "description": "Retrieve indicators of report from Dragos based on report serial number.",
+          "name": "Get Indicators Of Report",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
             "Dragos",
@@ -278,17 +363,17 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/e83e0cbe-7b65-46a0-aa1b-ea6c58e3d78a",
+          "triggerStep": "/api/3/workflow_steps/89e8be23-245a-436e-87cb-b9647c0a09eb",
           "steps": [
             {
-              "uuid": "e83e0cbe-7b65-46a0-aa1b-ea6c58e3d78a",
+              "uuid": "89e8be23-245a-436e-87cb-b9647c0a09eb",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "ef4a9cb3-8fa2-49c5-9e0a-ce68c64e5e52",
-                "title": "Dragos WorldView Threat Intelligence: Get All Products",
+                "route": "6b9c1696-4b77-4871-869a-b680e5721123",
+                "title": "Dragos WorldView Threat Intelligence: Get Indicators Of Report",
                 "resources": [
                   "alerts"
                 ],
@@ -307,24 +392,21 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "88f0a3d1-1de3-4064-b25a-bbc117f22c43",
+              "uuid": "a047ec67-0152-469f-b435-20d13e159693",
               "@type": "WorkflowStep",
-              "name": "Get All Products",
+              "name": "Get Indicators Of Report",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Dragos WorldView Threat Intelligence",
                 "config": "''",
                 "params": {
-                  "sort_by": "Release Date",
-                  "sort_desc": "ASC",
-                  "page": 1,
-                  "page_size": 500
+                  "process_response_as": "Save as CSV"
                 },
                 "version": "1.0.0",
                 "connector": "dragos-worldview-threat-intelligence",
-                "operation": "get_all_products",
-                "operationTitle": "Get All Products",
+                "operation": "get_indicators_of_report",
+                "operationTitle": "Get Indicators Of Report",
                 "step_variables": {
                   "output_data": "{{vars.result}}"
                 }
@@ -337,101 +419,19 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "4f5021a4-20f7-4dab-9f76-e46e4a7acf4b",
+              "uuid": "1f69163d-febc-4d71-9487-7cb733b786a3",
               "label": null,
               "isExecuted": false,
-              "name": "Start-> Get All Products",
-              "sourceStep": "/api/3/workflow_steps/e83e0cbe-7b65-46a0-aa1b-ea6c58e3d78a",
-              "targetStep": "/api/3/workflow_steps/88f0a3d1-1de3-4064-b25a-bbc117f22c43"
+              "name": "Start-> Get Indicators Of Report",
+              "sourceStep": "/api/3/workflow_steps/89e8be23-245a-436e-87cb-b9647c0a09eb",
+              "targetStep": "/api/3/workflow_steps/a047ec67-0152-469f-b435-20d13e159693"
             }
           ]
         },
         {
           "@type": "Workflow",
-          "uuid": "5996fd5d-77af-4428-a2cc-bd61c9d42067",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
-          "triggerLimit": null,
-          "description": "Retrieve details of product from Dragos based on various parameters such as product serial number and details of product metadata, CSV file or STIX2.0 JSON.",
-          "name": "Get Product Details",
-          "tag": "#Dragos WorldView Threat Intelligence",
-          "recordTags": [
-            "Dragos",
-            "dragos-worldview-threat-intelligence"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/519fed3e-7fbb-4b8a-bdd0-aab8ebeba922",
-          "steps": [
-            {
-              "uuid": "519fed3e-7fbb-4b8a-bdd0-aab8ebeba922",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "79563a93-bf7c-42ec-9f83-2e82ea50f474",
-                "title": "Dragos WorldView Threat Intelligence: Get Product Details",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "fb21f830-5e8d-4061-8c5b-0ee93f4a71f7",
-              "@type": "WorkflowStep",
-              "name": "Get Product Details",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Dragos WorldView Threat Intelligence",
-                "config": "''",
-                "params": {
-                  "details_of": "Product Metadata"
-                },
-                "version": "1.0.0",
-                "connector": "dragos-worldview-threat-intelligence",
-                "operation": "get_product_details",
-                "operationTitle": "Get Product Details",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "1131d808-f0d1-4b46-82cf-2b38da8b0813",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Product Details",
-              "sourceStep": "/api/3/workflow_steps/519fed3e-7fbb-4b8a-bdd0-aab8ebeba922",
-              "targetStep": "/api/3/workflow_steps/fb21f830-5e8d-4061-8c5b-0ee93f4a71f7"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "96470415-ecae-4802-a63e-bb8f7d98cfcf",
-          "collection": "/api/3/workflow_collections/16ce5685-7c01-4a9a-8ff1-3034b7337830",
+          "uuid": "0d7770c9-1400-43a9-b51d-bcfa98a95ef4",
+          "collection": "/api/3/workflow_collections/7166680e-8034-4370-8fdb-4a12f6382132",
           "triggerLimit": null,
           "description": "Retrieves list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
           "name": "Get All Tags",
@@ -445,16 +445,16 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/8badc87f-7e68-4375-b26f-3c08ace2e7d5",
+          "triggerStep": "/api/3/workflow_steps/3e359441-6e68-4f51-8d19-b9c91a63b4a6",
           "steps": [
             {
-              "uuid": "8badc87f-7e68-4375-b26f-3c08ace2e7d5",
+              "uuid": "3e359441-6e68-4f51-8d19-b9c91a63b4a6",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "7db742cf-0b34-4203-9f18-68149953915d",
+                "route": "aa9c80b4-3046-40b2-a3e3-e8d232d2b983",
                 "title": "Dragos WorldView Threat Intelligence: Get All Tags",
                 "resources": [
                   "alerts"
@@ -474,7 +474,7 @@
               "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
             },
             {
-              "uuid": "ce856b3c-1c99-414d-a1ba-c7db936819f3",
+              "uuid": "da235462-71d1-486a-b535-79dd8f54bdab",
               "@type": "WorkflowStep",
               "name": "Get All Tags",
               "description": null,
@@ -502,12 +502,12 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "uuid": "a05ff681-b634-4303-bcd9-69afd92e2aae",
+              "uuid": "c4823eba-517e-40ee-9d2c-4ac700beb675",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Get All Tags",
-              "sourceStep": "/api/3/workflow_steps/8badc87f-7e68-4375-b26f-3c08ace2e7d5",
-              "targetStep": "/api/3/workflow_steps/ce856b3c-1c99-414d-a1ba-c7db936819f3"
+              "sourceStep": "/api/3/workflow_steps/3e359441-6e68-4f51-8d19-b9c91a63b4a6",
+              "targetStep": "/api/3/workflow_steps/da235462-71d1-486a-b535-79dd8f54bdab"
             }
           ]
         }

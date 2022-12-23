@@ -1,11 +1,10 @@
-
 {
   "name": "dragos-worldview-threat-intelligence",
   "label": "Dragos WorldView Threat Intelligence",
   "version": "1.0.0",
   "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "category": "Threat Intelligence",
   "help_online": "",
@@ -58,7 +57,7 @@
       "operation": "get_all_indicators",
       "title": "Get All Indicators",
       "category": "investigation",
-      "annotation": "get_indicators",
+      "annotation": "get_all_indicators",
       "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
       "enabled": true,
       "parameters": [
@@ -69,7 +68,8 @@
           "visible": true,
           "type": "text",
           "name": "value",
-          "description": "Specify indicator value to get details from Dragos."
+          "description": "Specify indicator value to get details from Dragos.",
+          "tooltip": "Specify indicator value to get details from Dragos"
         },
         {
           "title": "Indicator Type",
@@ -88,12 +88,13 @@
             "SHA256"
           ],
           "value": "IP",
-          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256."
+          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
+          "tooltip": "Choose the type of indicator"
         },
         {
           "title": "Page Size",
           "description": "(Optional) Number of records that the operation should include per page. Page size default value is 500. Page size must be less than 1001",
-          "tooltip": "Page size default value is 500. Page size must be less than 1001",
+          "tooltip": "Number of records response should include. Default Page size is 500. Page size must be less than 1001",
           "required": false,
           "editable": true,
           "visible": true,
@@ -114,7 +115,7 @@
         },
         {
           "title": "Updated After",
-          "tooltip": "Datetime from which you want to retrieve indicators",
+          "tooltip": "Datetime from which you wish to retrieve indicators",
           "description": "(Optional) Datetime of updated after from which you want to retrieve indicators. The datetime must be in the ISO format (UTC). If you specify the datetime then only those indicators that are modified later are retrieved.",
           "required": false,
           "editable": true,
@@ -123,15 +124,15 @@
           "name": "updated_after"
         },
         {
-          "title": "Serial",
-          "tooltip": "CSV/list of serial",
-          "description": "Specify CSV/list of serial for which indicators you want to retrieve. Search for indicators matching a report serial.",
+          "title": "Serials",
+          "tooltip": "List of report serial numbers",
+          "description": "Specify the list of serial for which indicators you want to retrieve. Search for indicators matching a report serial(s).",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "serial",
-          "placeholder": "serial1, serial2"
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Tags",
@@ -140,9 +141,9 @@
           "visible": true,
           "type": "text",
           "name": "tags",
-          "placeholder": "tag1, tag2",
-          "tooltip": "CSV/list of tag",
-          "description": "Specify CSV/list of tags for which indicators you want to retrieve. Search for indicators matching tag(s) text."
+          "placeholder": "For e.g. tag1, tag2, ...",
+          "tooltip": "List of tags",
+          "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
         }
       ],
       "output_schema": {
@@ -180,10 +181,10 @@
       }
     },
     {
-      "operation": "get_stix2_indicators",
-      "title": "Get Stix2 Indicators",
+      "operation": "get_all_indicators_in_stix2",
+      "title": "Get All Indicators In Stix2",
       "category": "investigation",
-      "annotation": "get_indicators",
+      "annotation": "get_all_indicators_in_stix2",
       "description": "Retrieves a list of stix2 bundle of indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
       "enabled": true,
       "parameters": [
@@ -194,7 +195,8 @@
           "visible": true,
           "type": "text",
           "name": "value",
-          "description": "Specify indicator value to get details from Dragos."
+          "description": "Specify indicator value to get details from Dragos.",
+          "tooltip": "Specify indicator value to get details from Dragos"
         },
         {
           "title": "Indicator Type",
@@ -213,12 +215,13 @@
             "SHA256"
           ],
           "value": "IP",
-          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256."
+          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
+          "tooltip": "Choose the type of indicator"
         },
         {
           "title": "Page Size",
-          "description": "(Optional) Number of records that the operation should include per page.",
-          "tooltip": "Page size default value is 500. Page size must be less than 1001",
+          "description": "(Optional) Number of records that the operation should include per page. Page size default value is 500. Page size must be less than 1001",
+          "tooltip": "Number of records response should include. Default Page size is 500. Page size must be less than 1001",
           "required": false,
           "editable": true,
           "visible": true,
@@ -235,11 +238,11 @@
           "name": "page",
           "tooltip": "Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you want to retrieve records."
+          "description": "(Optional) Page number from which you want to retrieve records. Default value: 1"
         },
         {
           "title": "Updated After",
-          "tooltip": "Datetime from which you want to retrieve indicators",
+          "tooltip": "Datetime from which you wish to retrieve indicators",
           "description": "(Optional) Datetime of updated after from which you want to retrieve indicators. The datetime must be in the ISO format (UTC). If you specify the datetime then only those indicators that are modified later are retrieved.",
           "required": false,
           "editable": true,
@@ -248,55 +251,53 @@
           "name": "updated_after"
         },
         {
-          "title": "Serial",
-          "tooltip": "CSV/list of serial",
-          "description": "Specify CSV/list of serial for which indicators you want to retrieve. Search for indicators matching a report serial.",
+          "title": "Serials",
+          "tooltip": "List of report serial numbers",
+          "description": "Specify the list of serial for which indicators you want to retrieve. Search for indicators matching a report serial(s).",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "serial",
-          "placeholder": "serial1, serial2"
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Tags",
-          "tooltip": "CSV/list of tag",
-          "description": "Specify CSV/list of tags for which indicators you want to retrieve. Search for indicators matching tag(s) text.",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "tags",
-          "placeholder": "tag1, tag2"
+          "placeholder": "For e.g. tag1, tag2, ...",
+          "tooltip": "List of tags",
+          "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
         }
       ],
       "output_schema": {
         "type": "",
         "id": "",
         "spec_version": "",
-        "objects": []
+        "objects": [
+          {
+            "id": "",
+            "type": "",
+            "created": "",
+            "modified": "",
+            "created_by_ref": ""
+          }
+        ]
       }
     },
     {
-      "operation": "get_cached_stix2_indicators",
-      "title": "Get Cached Stix2 Indicators",
+      "operation": "get_all_reports",
+      "title": "Get All Reports",
       "category": "investigation",
-      "annotation": "get_indicators",
-      "description": "Retrieves a list of cached stix2 bundle of the last 12 months of indicators from Dragos. Note: This action is not available to trial users.",
-      "enabled": true,
-      "parameters": [],
-      "output_schema": {}
-    },
-    {
-      "operation": "get_all_products",
-      "title": "Get All Products",
-      "category": "investigation",
-      "annotation": "get_products",
-      "description": "Retrieves list of all products from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
+      "annotation": "get_all_reports",
+      "description": "Retrieves list of all reports from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
       "enabled": true,
       "parameters": [
         {
-          "title": "Sort By Field",
+          "title": "Sort By",
           "required": false,
           "editable": true,
           "visible": true,
@@ -309,23 +310,23 @@
           ],
           "name": "sort_by",
           "value": "Release Date",
-          "tooltip": "Sort returned products Default value is Release Date",
-          "description": "Sort returned products Default value is Release Date."
+          "tooltip": "Sort the reports on the basis of selected option. Default value is Release Date",
+          "description": "Sort the reports on the basis of selected option. Default value is Release Date."
         },
         {
-          "title": "Sort Direction",
+          "title": "Sort Order",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "select",
           "options": [
-            "ASC",
-            "DESC"
+            "Ascending",
+            "Descending"
           ],
-          "name": "sort_desc",
-          "value": "ASC",
-          "tooltip": "The order in which to receive results. Valid values are ASC (ascending) or DESC (descending).",
-          "description": "Select the direction in which you want to sort the results of this operation. You can choose between ASC (Ascending) or DESC(descending)."
+          "name": "sort_order",
+          "value": "Ascending",
+          "tooltip": "Specify the sorting order to receive the results in.",
+          "description": "Select the sorting order in which you want to sort the results."
         },
         {
           "title": "Page Number",
@@ -351,8 +352,8 @@
         },
         {
           "title": "Updated After",
-          "tooltip": "Datetime from which you want to retrieve products",
-          "description": "(Optional) Datetime of updated after from which you want to retrieve products. The datetime must be in the ISO format (UTC). If you specify the datetime then only those products that are modified later are retrieved.",
+          "tooltip": "Datetime from which you want to retrieve reports",
+          "description": "(Optional) Datetime of updated after from which you want to retrieve reports. The datetime must be in the ISO format (UTC). If you specify the datetime then only reports, which are modified later, are retrieved.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -361,23 +362,24 @@
         },
         {
           "title": "Serials",
-          "tooltip": "CSV/list of serials",
-          "description": "Specify CSV/list of serial for which products you want to retrieve. Search for products matching a report serial.",
+          "tooltip": "List of report serial numbers",
+          "description": "Specify the list of report serial numbers for which you wish to retrieve the details. Search for reports matching the specified serial(s).",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "serials",
-          "placeholder": "serial1, serial2"
+          "placeholder": "For e.g. serial1, serial2, ..."
         },
         {
           "title": "Indicator",
-          "description": "Specify indicator for which filter reports related to a given indicator (exact match only).",
+          "description": "Specify the indicator to filter the reports (exact match only).",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "indicator"
+          "name": "indicator",
+          "tooltip": "Specify the indicator to filter the reports (exact match only)"
         }
       ],
       "output_schema": {
@@ -408,84 +410,110 @@
       }
     },
     {
-      "operation": "get_product_details",
-      "title": "Get Product Details",
+      "operation": "get_report_metadata",
+      "title": "Get Report Metadata",
       "category": "investigation",
-      "annotation": "get_products",
-      "description": "Retrieve details of product from Dragos based on various parameters such as product serial number and details of product metadata, CSV file or STIX2.0 JSON.",
+      "annotation": "get_report_metadata",
+      "description": "Retrieves the report metadata based on the specified serial number.",
       "enabled": true,
       "parameters": [
         {
-          "title": "Details of",
+          "title": "Report Serial Number",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "report_serial_number",
+          "description": "Specify report serial number for which you want to retrieve details.",
+          "tooltip": "Specify report serial number to retrieve the details."
+        }
+      ],
+      "output_schema": {
+        "tlp_level": "",
+        "title": "",
+        "executive_summary": "",
+        "updated_at": "",
+        "threat_level": "",
+        "serial": "",
+        "ioc_count": "",
+        "tags": [
+          {
+            "text": "",
+            "tag_type": ""
+          }
+        ],
+        "release_date": "",
+        "type": "",
+        "report_link": "",
+        "ioc_csv_link": "",
+        "ioc_stix2_link": ""
+      }
+    },
+    {
+      "operation": "get_indicators_of_report",
+      "title": "Get Indicators Of Report",
+      "category": "investigation",
+      "annotation": "get_indicators_of_report",
+      "description": "Retrieve indicators of report from Dragos based on report serial number.",
+      "enabled": true,
+      "parameters": [
+        {
+          "title": "Process Response As",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
           "options": [
-            "Product Metadata",
-            "CSV File",
+            "Save as CSV",
             "STIX2.0 JSON"
           ],
           "onchange": {
-            "CSV File": [
+            "Save as CSV": [
               {
-                "title": "Add as Attachment",
+                "title": "Filename",
                 "required": true,
                 "editable": true,
                 "visible": true,
-                "type": "checkbox",
-                "value": false,
-                "name": "attachment",
-                "description": "Add as Attachment in FortiSOAR"
+                "type": "text",
+                "name": "filename",
+                "description": "Specify filename to save file as.",
+                "tooltip": "Specify filename to save file as.",
+                "placeholder": "e.g. report.csv"
               }
             ]
           },
-          "name": "details_of",
-          "value": "Product Metadata",
-          "tooltip": "Retrieve the details of product on selecting.",
-          "description": "Retrieve the details of product. You can choose from, Product Metadata: Returns the metadata of a product. CSV File: Returns the CSV file for the indicators related to a given serial.  STIX2.0 JSON: Returns the STIX2.0 JSON bundle for the indicators related to a given serial."
+          "name": "process_response_as",
+          "value": "Save as CSV",
+          "tooltip": "Choose the option either to save indicators as a CSV file on the FortiSOAR server based on the specified filename or return the response as STIX2.0 JSON",
+          "description": "Choose the option either to save indicators as a CSV file on the FortiSOAR server based on the specified filename or return the response as STIX2.0 JSON."
         },
         {
-          "title": "Product Serial Number",
+          "title": "Report Serial Number",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "id",
-          "description": "Specify product serial number for which you want to retrieve details."
+          "name": "report_serial_number",
+          "description": "Specify report serial number for which you want to retrieve details.",
+          "tooltip": "Specify report serial number to retrieve the details."
         }
       ],
       "conditional_output_schema": [
         {
-          "condition": "{{details_of === 'Product Metadata'}}",
-          "output_schema": {
-            "tlp_level": "",
-            "title": "",
-            "executive_summary": "",
-            "updated_at": "",
-            "threat_level": "",
-            "serial": "",
-            "ioc_count": "",
-            "tags": [
-              {
-                "text": "",
-                "tag_type": ""
-              }
-            ],
-            "release_date": "",
-            "type": "",
-            "report_link": "",
-            "ioc_csv_link": "",
-            "ioc_stix2_link": ""
-          }
-        },
-        {
-          "condition": "{{details_of === 'STIX2.0 JSON'}}",
+          "condition": "{{process_response_as === 'STIX2.0 JSON'}}",
           "output_schema": {
             "type": "",
             "id": "",
             "spec_version": "",
-            "objects": []
+            "objects": [
+              {
+                "id": "",
+                "type": "",
+                "created": "",
+                "modified": "",
+                "created_by_ref": ""
+              }
+            ]
           }
         }
       ]
@@ -505,9 +533,9 @@
           "visible": true,
           "type": "integer",
           "name": "page",
-          "tooltip": "Default value: 1",
+          "tooltip": "Page number from which you wish to retrieve records. Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you want to retrieve records. Default value: 1"
+          "description": "(Optional) Page number from which you wish to retrieve records. Default value: 1"
         },
         {
           "title": "Page Size",
@@ -518,7 +546,7 @@
           "name": "page_size",
           "value": 100,
           "description": "(Optional) Number of records that the operation should include per page. Page size default value is 100. Page size must be less than 500.",
-          "tooltip": "Page size default value is 100. Page size must be less than 500"
+          "tooltip": "Default page size is 100. Page size must be less than 500"
         },
         {
           "title": "Tag Type",
@@ -527,7 +555,8 @@
           "visible": true,
           "type": "text",
           "name": "tag_type",
-          "description": "Specify tag type for which tags you want to retrieve."
+          "description": "Specify tag type to retrieve such tags.",
+          "tooltip": "Specify tag type to retrieve such tags."
         }
       ],
       "output_schema": {
@@ -551,3 +580,5 @@
     }
   ]
 }
+
+

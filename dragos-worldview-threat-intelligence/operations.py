@@ -12,7 +12,7 @@ from requests import request, post, exceptions as req_exceptions
 import arrow
 from django.conf import settings
 
-logger = get_logger('dragos')
+logger = get_logger("dragos-worldview-threat-intelligence")
 
 
 def get_config(config):
@@ -45,7 +45,7 @@ def make_rest_call(config, endpoint, method='GET'):
         else:
             logger.error(response.text)
             if response.status_code == 401:
-                raise ConnectorError('Unauthorized: Invalid Credentials')
+                raise ConnectorError('Invalid Credentials')
             raise ConnectorError(response.text)
     except req_exceptions.SSLError:
         logger.error('An SSL error occurred')
@@ -76,6 +76,8 @@ def build_query(params, query_params):
             param_val = params.get(param_key, '')
             if param_key == 'updated_after' and param_val:
                 param_val = format_date(param_val)
+            if param_key == 'sort_desc':
+                param_val = PARAM_MAPPING.get(params.get("sort_order"))
             if param_key in list(encode_keys.keys()) and param_val:
                 param_key = encode_keys.get(param_key)
                 param_val = list(map(lambda x: x.strip(' '), param_val.split(","))) if isinstance(param_val,
@@ -96,7 +98,7 @@ def get_all_indicators(config, params):
     return make_rest_call(config, endpoint)
 
 
-def get_stix2_indicators(config, params):
+def get_all_indicators_in_stix2(config, params):
     query_params = build_query(params, indicator_params)
     endpoint = 'indicators.stix2' + (('?' + query_params) if query_params else '')
     return make_rest_call(config, endpoint)
@@ -126,7 +128,7 @@ def _upload_file_to_cyops(file_name, file_content, file_type):
             response = maybe_json_or_raise(response)
 
         file_id = response['@id']
-        file_description = 'Product Indicators retrieved from Dragos'
+        file_description = 'Report Indicators retrieved from Dragos'
         attach_response = make_request('/api/3/attachments', 'POST',
                                        {'name': file_name, 'file': file_id, 'description': file_description})
         logger.info('attach file complete: {0}'.format(attach_response))
@@ -142,20 +144,26 @@ def _create_cyops_attachment(file_name, content):
     return file_resp
 
 
-def get_all_products(config, params):
+def get_all_reports(config, params):
     query_params = build_query(params, product_params)
     endpoint = 'products' + (('?' + query_params) if query_params else '')
     return make_rest_call(config, endpoint)
 
 
-def get_product_details(config, params):
-    details_of = params.get('details_of')
-    product_id = params.get('id')
-    endpoint = ENDPOINT_MAPPING.get(details_of).format(id=product_id)
+def get_report_metadata(config, params):
+    report_serial_number = params.get("report_serial_number")
+    endpoint = "products/{id}".format(id=report_serial_number)
+    return make_rest_call(config, endpoint)
+
+
+def get_indicators_of_report(config, params):
+    process_response_as = params.get('process_response_as')
+    report_serial_number = params.get('report_serial_number')
+    endpoint = ENDPOINT_MAPPING.get(process_response_as).format(id=report_serial_number)
     resp = make_rest_call(config, endpoint)
-    if params.get("details_of") == "CSV File" and params.get("attachment") is True:
+    if params.get("process_response_as") == "Save as CSV":
         file_content = resp.content
-        file_name = "dragos-product.csv"
+        file_name = params.get("filename")
         return _create_cyops_attachment(file_name=file_name, content=file_content)
     else:
         return resp
@@ -182,9 +190,9 @@ def _check_health(config):
 
 operations = {
     'get_all_indicators': get_all_indicators,
-    'get_stix2_indicators': get_stix2_indicators,
-    'get_cached_stix2_indicators': get_cached_stix2_indicators,
-    'get_all_products': get_all_products,
-    'get_product_details': get_product_details,
+    'get_all_indicators_in_stix2': get_all_indicators_in_stix2,
+    'get_all_reports': get_all_reports,
+    'get_report_metadata': get_report_metadata,
+    'get_indicators_of_report': get_indicators_of_report,
     'get_all_tags': get_all_tags
 }
