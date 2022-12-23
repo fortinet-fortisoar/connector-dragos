@@ -9,7 +9,7 @@ from .operations import operations, _check_health
 logger = get_logger("dragos-worldview-threat-intelligence")
 
 
-class DragosWorldviewConnector(Connector):
+class DragosWorldViewThreatIntel(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
             operation = operations.get(operation)
