@@ -15,6 +15,7 @@ from django.conf import settings
 logger = get_logger("dragos-worldview-threat-intelligence")
 
 
+
 def get_config(config):
     base_url = config.get('server_url').strip('/')
     if base_url[:7] != 'http://' and base_url[:8] != 'https://':
@@ -46,7 +47,10 @@ def make_rest_call(config, endpoint, method='GET'):
             logger.error(response.text)
             if response.status_code == 401:
                 raise ConnectorError('Invalid Credentials')
-            raise ConnectorError(response.text)
+            elif response.status_code == 404 and 'Not Found' in response.text:
+                return {"message": "Resource Not Found!"}
+            else:
+                raise ConnectorError(response.text)
     except req_exceptions.SSLError:
         logger.error('An SSL error occurred')
         raise ConnectorError('An SSL error occurred')
@@ -161,7 +165,9 @@ def get_indicators_of_report(config, params):
     report_serial_number = params.get('report_serial_number')
     endpoint = ENDPOINT_MAPPING.get(process_response_as).format(id=report_serial_number)
     resp = make_rest_call(config, endpoint)
-    if params.get("process_response_as") == "Save as CSV":
+    if "message" in resp and resp.get("message") == "Resource Not Found!":
+        return resp
+    elif params.get("process_response_as") == "Save as CSV":
         file_content = resp.content
         file_name = params.get("filename")
         return _create_cyops_attachment(file_name=file_name, content=file_content)
