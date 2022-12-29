@@ -47,8 +47,8 @@ def make_rest_call(config, endpoint, method='GET'):
             logger.error(response.text)
             if response.status_code == 401:
                 raise ConnectorError('Invalid Credentials')
-            elif response.status_code == 404 and 'Not Found' in response.text:
-                return {"message": "Resource Not Found!"}
+            elif response.status_code == 404:
+                return response.json()
             else:
                 raise ConnectorError(response.text)
     except req_exceptions.SSLError:
@@ -165,7 +165,7 @@ def get_indicators_of_report(config, params):
     report_serial_number = params.get('report_serial_number')
     endpoint = ENDPOINT_MAPPING.get(process_response_as).format(id=report_serial_number)
     resp = make_rest_call(config, endpoint)
-    if "message" in resp and resp.get("message") == "Resource Not Found!":
+    if "message" in resp and resp.get("message") == "Not Found":
         return resp
     elif params.get("process_response_as") == "Save as CSV":
         file_content = resp.content
