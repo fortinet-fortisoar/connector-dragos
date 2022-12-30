@@ -124,9 +124,9 @@
           "name": "updated_after"
         },
         {
-          "title": "Serials",
+          "title": "Report Serial Numbers",
           "tooltip": "List of report serial numbers",
-          "description": "Specify the list of serial for which indicators you want to retrieve. Search for indicators matching a report serial(s).",
+          "description": "Specify the list of serials you wish to retrieve indicators for. Search for indicators matching a report serial(s).",
           "required": false,
           "editable": true,
           "visible": true,
@@ -251,9 +251,9 @@
           "name": "updated_after"
         },
         {
-          "title": "Serials",
-          "tooltip": "List of report serial numbers",
-          "description": "Specify the list of serial for which indicators you want to retrieve. Search for indicators matching a report serial(s).",
+          "title": "Report Serial Numbers",
+          "tooltip": "Specify the list of serials to retrieve indicators for.",
+          "description": "Specify the list of serials to retrieve indicators for. Search for indicators matching a report serial(s).",
           "required": false,
           "editable": true,
           "visible": true,
@@ -361,8 +361,8 @@
           "name": "updated_after"
         },
         {
-          "title": "Serials",
-          "tooltip": "List of report serial numbers",
+          "title": "Report Serial Numbers",
+          "tooltip": "List of report serial numbers.",
           "description": "Specify the list of report serial numbers for which you wish to retrieve the details. Search for reports matching the specified serial(s).",
           "required": false,
           "editable": true,
@@ -476,8 +476,8 @@
                 "visible": true,
                 "type": "text",
                 "name": "filename",
-                "description": "Specify filename to save file as.",
-                "tooltip": "Specify filename to save file as.",
+                "description": "This file name will be used to create attachment in FortiSOAR.",
+                "tooltip": "This file name will be used to create attachment in FortiSOAR.",
                 "placeholder": "e.g. report.csv"
               }
             ]
@@ -514,6 +514,74 @@
                 "created_by_ref": ""
               }
             ]
+          }
+        },
+        {
+          "condition": "{{process_response_as === 'Save as CSV'}}",
+          "output_schema": {
+            "id": "",
+            "@id": "",
+            "file": {
+              "id": "",
+              "@id": "",
+              "size": "",
+              "uuid": "",
+              "@type": "",
+              "assignee": "",
+              "filename": "",
+              "metadata": [],
+              "mimeType": "",
+              "thumbnail": "",
+              "uploadDate": ""
+            },
+            "name": "",
+            "type": "",
+            "uuid": "",
+            "@type": "",
+            "tasks": [],
+            "alerts": [],
+            "assets": [],
+            "owners": [],
+            "people": [],
+            "@context": "",
+            "assignee": "",
+            "comments": [],
+            "warrooms": [],
+            "incidents": [],
+            "createDate": "",
+            "createUser": {
+              "id": "",
+              "@id": "",
+              "name": "",
+              "uuid": "",
+              "@type": "",
+              "avatar": "",
+              "userId": "",
+              "userType": "",
+              "createDate": "",
+              "createUser": "",
+              "modifyDate": "",
+              "modifyUser": ""
+            },
+            "indicators": [],
+            "modifyDate": "",
+            "modifyUser": {
+              "id": "",
+              "@id": "",
+              "name": "",
+              "uuid": "",
+              "@type": "",
+              "avatar": "",
+              "userId": "",
+              "userType": "",
+              "createDate": "",
+              "createUser": "",
+              "modifyDate": "",
+              "modifyUser": ""
+            },
+            "recordTags": [],
+            "userOwners": [],
+            "description": ""
           }
         }
       ]
