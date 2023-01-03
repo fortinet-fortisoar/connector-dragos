@@ -58,7 +58,7 @@
       "title": "Get All Indicators",
       "category": "investigation",
       "annotation": "get_all_indicators",
-      "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+      "description": "Retrieves a paginated list of all indicators from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
       "enabled": true,
       "parameters": [
         {
@@ -68,7 +68,7 @@
           "visible": true,
           "type": "text",
           "name": "value",
-          "description": "Specify indicator value to get details from Dragos.",
+          "description": "(Optional) Specify an indicator value to get details from Dragos.",
           "tooltip": "Specify indicator value to get details from Dragos"
         },
         {
@@ -88,13 +88,13 @@
             "SHA256"
           ],
           "value": "IP",
-          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
+          "description": "(Optional) Specify the type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
           "tooltip": "Choose the type of indicator"
         },
         {
           "title": "Page Size",
-          "description": "(Optional) Number of records that the operation should include per page. Page size default value is 500. Page size must be less than 1001",
-          "tooltip": "Number of records response should include. Default Page size is 500. Page size must be less than 1001",
+          "description": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
+          "tooltip": "Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -111,12 +111,12 @@
           "name": "page",
           "tooltip": "Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you want to retrieve records. Default value: 1"
+          "description": "(Optional) Specify the page number from which to retrieve the records. The default value is 1"
         },
         {
           "title": "Updated After",
           "tooltip": "Datetime from which you wish to retrieve indicators",
-          "description": "(Optional) Datetime of updated after from which you want to retrieve indicators. The datetime must be in the ISO format (UTC). If you specify the datetime then only those indicators that are modified later are retrieved.",
+          "description": "(Optional) Specify the date and time after which to retrieve indicators. The DateTime must be in the ISO format (UTC).",
           "required": false,
           "editable": true,
           "visible": true,
@@ -126,7 +126,7 @@
         {
           "title": "Report Serial Numbers",
           "tooltip": "List of report serial numbers",
-          "description": "Specify the list of serials you wish to retrieve indicators for. Search for indicators matching a report serial(s).",
+          "description": "(Optional) Specify the list of serial numbers of the report containing the indicators to retrieve.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -142,8 +142,8 @@
           "type": "text",
           "name": "tags",
           "placeholder": "For e.g. tag1, tag2, ...",
-          "tooltip": "List of tags",
-          "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
+          "tooltip": "Specify the list of tags for the indicators to search and retrieve.",
+          "description": "(Optional) Specify the list of tags for the indicators to search and retrieve."
         }
       ],
       "output_schema": {
@@ -185,7 +185,7 @@
       "title": "Get All Indicators In Stix2",
       "category": "investigation",
       "annotation": "get_all_indicators_in_stix2",
-      "description": "Retrieves a list of stix2 bundle of indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+      "description": "Retrieves a list of stix2 (Structured Threat Information Expression) bundle of indicators from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
       "enabled": true,
       "parameters": [
         {
@@ -195,7 +195,7 @@
           "visible": true,
           "type": "text",
           "name": "value",
-          "description": "Specify indicator value to get details from Dragos.",
+          "description": "(Optional) Specify an indicator value to get details from Dragos.",
           "tooltip": "Specify indicator value to get details from Dragos"
         },
         {
@@ -215,13 +215,13 @@
             "SHA256"
           ],
           "value": "IP",
-          "description": "(Optional) Type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
+          "description": "(Optional) Specify the type of indicator whose details you want to retrieve from Dragos. Choose from the following indicator types: Domain, Filename, Hostname, IP, MD5, SHA1, SHA256.",
           "tooltip": "Choose the type of indicator"
         },
         {
           "title": "Page Size",
-          "description": "(Optional) Number of records that the operation should include per page. Page size default value is 500. Page size must be less than 1001",
-          "tooltip": "Number of records response should include. Default Page size is 500. Page size must be less than 1001",
+          "description": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
+          "tooltip": "Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -238,12 +238,12 @@
           "name": "page",
           "tooltip": "Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you want to retrieve records. Default value: 1"
+          "description": "(Optional) Specify the page number from which to retrieve the records. The default value is 1."
         },
         {
           "title": "Updated After",
           "tooltip": "Datetime from which you wish to retrieve indicators",
-          "description": "(Optional) Datetime of updated after from which you want to retrieve indicators. The datetime must be in the ISO format (UTC). If you specify the datetime then only those indicators that are modified later are retrieved.",
+          "description": "(Optional) Specify the date and time after which to retrieve indicators. The DateTime must be in the ISO format (UTC).",
           "required": false,
           "editable": true,
           "visible": true,
@@ -253,7 +253,7 @@
         {
           "title": "Report Serial Numbers",
           "tooltip": "Specify the list of serials to retrieve indicators for.",
-          "description": "Specify the list of serials to retrieve indicators for. Search for indicators matching a report serial(s).",
+          "description": "(Optional) Specify the list of serial numbers of the report containing the indicators to retrieve. ",
           "required": false,
           "editable": true,
           "visible": true,
@@ -270,7 +270,7 @@
           "name": "tags",
           "placeholder": "For e.g. tag1, tag2, ...",
           "tooltip": "List of tags",
-          "description": "Specify the list of tags for which indicators you wish to retrieve. Search for indicators matching tag(s) text."
+          "description": "(Optional) Specify the list of tags for the indicators to search and retrieve. "
         }
       ],
       "output_schema": {
@@ -293,7 +293,7 @@
       "title": "Get All Reports",
       "category": "investigation",
       "annotation": "get_all_reports",
-      "description": "Retrieves list of all reports from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
+      "description": "Retrieves a list of all reports from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
       "enabled": true,
       "parameters": [
         {
@@ -311,7 +311,7 @@
           "name": "sort_by",
           "value": "Release Date",
           "tooltip": "Sort the reports on the basis of selected option. Default value is Release Date",
-          "description": "Sort the reports on the basis of selected option. Default value is Release Date."
+          "description": "(Optional) Specify criteria to sort the reports. The default value is Release Date. Choose from the following options: Title, Threat, TLC, Release Date."
         },
         {
           "title": "Sort Order",
@@ -326,7 +326,7 @@
           "name": "sort_order",
           "value": "Ascending",
           "tooltip": "Specify the sorting order to receive the results in.",
-          "description": "Select the sorting order in which you want to sort the results."
+          "description": "(Optional) Specify the sorting order of the results. "
         },
         {
           "title": "Page Number",
@@ -337,11 +337,11 @@
           "name": "page",
           "tooltip": "Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you want to retrieve records. Default value: 1"
+          "description": "(Optional) Specify the page number from which to retrieve the records. The default value is 1."
         },
         {
           "title": "Page Size",
-          "description": "(Optional) Number of records that the operation should include per page. Page size default value is 500. Page size must be less than 1001",
+          "description": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500. ",
           "tooltip": "Page size default value is 500. Page size must be less than 1001",
           "required": false,
           "editable": true,
@@ -353,7 +353,7 @@
         {
           "title": "Updated After",
           "tooltip": "Datetime from which you want to retrieve reports",
-          "description": "(Optional) Datetime of updated after from which you want to retrieve reports. The datetime must be in the ISO format (UTC). If you specify the datetime then only reports, which are modified later, are retrieved.",
+          "description": "(Optional) Specify the date and time after which to retrieve indicators. The DateTime must be in the ISO format (UTC). ",
           "required": false,
           "editable": true,
           "visible": true,
@@ -363,7 +363,7 @@
         {
           "title": "Report Serial Numbers",
           "tooltip": "List of report serial numbers.",
-          "description": "Specify the list of report serial numbers for which you wish to retrieve the details. Search for reports matching the specified serial(s).",
+          "description": "(Optional) Specify the list of serial numbers of the report, containing the indicators, to retrieve. ",
           "required": false,
           "editable": true,
           "visible": true,
@@ -373,7 +373,7 @@
         },
         {
           "title": "Indicator",
-          "description": "Specify the indicator to filter the reports (exact match only).",
+          "description": "(Optional) Specify the indicator to filter the reports (exact match only). ",
           "required": false,
           "editable": true,
           "visible": true,
@@ -424,7 +424,7 @@
           "visible": true,
           "type": "text",
           "name": "report_serial_number",
-          "description": "Specify report serial number for which you want to retrieve details.",
+          "description": "Specify the report's serial number from which to retrieve details. ",
           "tooltip": "Specify report serial number to retrieve the details."
         }
       ],
@@ -454,7 +454,7 @@
       "title": "Get Indicators Of Report",
       "category": "investigation",
       "annotation": "get_indicators_of_report",
-      "description": "Retrieve indicators of report from Dragos based on report serial number.",
+      "description": "Retrieves indicators of the report from Dragos based on the report's serial number.",
       "enabled": true,
       "parameters": [
         {
@@ -476,8 +476,8 @@
                 "visible": true,
                 "type": "text",
                 "name": "filename",
-                "description": "This file name will be used to create attachment in FortiSOAR.",
-                "tooltip": "This file name will be used to create attachment in FortiSOAR.",
+                "description": "Specify the name of the CSV file to be saved as an attachment in FortiSOAR. ",
+                "tooltip": "Specify the name of the CSV file to be saved as an attachment in FortiSOAR. ",
                 "placeholder": "e.g. report.csv"
               }
             ]
@@ -485,7 +485,7 @@
           "name": "process_response_as",
           "value": "Save as CSV",
           "tooltip": "Choose the option either to save indicators as a CSV file on the FortiSOAR server based on the specified filename or return the response as STIX2.0 JSON",
-          "description": "Choose the option either to save indicators as a CSV file on the FortiSOAR server based on the specified filename or return the response as STIX2.0 JSON."
+          "description": "Specify the file format in which to save the indicators. Available options are: Save as CSV, STIX2.0 JSON"
         },
         {
           "title": "Report Serial Number",
@@ -494,8 +494,8 @@
           "visible": true,
           "type": "text",
           "name": "report_serial_number",
-          "description": "Specify report serial number for which you want to retrieve details.",
-          "tooltip": "Specify report serial number to retrieve the details."
+          "description": "Specify the report's serial number from which to retrieve details. ",
+          "tooltip": "Specify the report's serial number from which to retrieve details. "
         }
       ],
       "conditional_output_schema": [
@@ -591,7 +591,7 @@
       "title": "Get All Tags",
       "category": "investigation",
       "annotation": "get_all_tags",
-      "description": "Retrieves list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
+      "description": "Retrieves a list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
       "enabled": true,
       "parameters": [
         {
@@ -603,7 +603,7 @@
           "name": "page",
           "tooltip": "Page number from which you wish to retrieve records. Default value: 1",
           "value": 1,
-          "description": "(Optional) Page number from which you wish to retrieve records. Default value: 1"
+          "description": "(Optional) Specify the page number from which to retrieve the records. The default value is 1."
         },
         {
           "title": "Page Size",
@@ -613,8 +613,8 @@
           "type": "integer",
           "name": "page_size",
           "value": 100,
-          "description": "(Optional) Number of records that the operation should include per page. Page size default value is 100. Page size must be less than 500.",
-          "tooltip": "Default page size is 100. Page size must be less than 500"
+          "description": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 500. The default value is 100. ",
+          "tooltip": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 500. The default value is 100. "
         },
         {
           "title": "Tag Type",
@@ -623,8 +623,8 @@
           "visible": true,
           "type": "text",
           "name": "tag_type",
-          "description": "Specify tag type to retrieve such tags.",
-          "tooltip": "Specify tag type to retrieve such tags."
+          "description": "Specify the tag type of the tags to retrieve. ",
+          "tooltip": "Specify the tag type of the tags to retrieve. "
         }
       ],
       "output_schema": {
