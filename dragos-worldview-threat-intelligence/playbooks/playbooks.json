@@ -18,7 +18,7 @@
           "uuid": "61420583-b8ba-4de9-9ae2-2f4350d0fbc4",
           "collection": "/api/3/workflow_collections/6eac3557-d28f-439c-9a30-69d445d0fb25",
           "triggerLimit": null,
-          "description": "Retrieves paginated list of all indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+          "description": "Retrieves a paginated list of all indicators from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
           "name": "Get All Indicators",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
@@ -102,7 +102,7 @@
           "uuid": "c34ba7c9-bf60-4b2c-a44c-769dedcbe0e1",
           "collection": "/api/3/workflow_collections/6eac3557-d28f-439c-9a30-69d445d0fb25",
           "triggerLimit": null,
-          "description": "Retrieves a list of stix2 bundle of indicators from Dragos based on various parameters such as indicator type, value and other parameters that you have specified.",
+          "description": "Retrieves a list of stix2 (Structured Threat Information Expression) bundle of indicators from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
           "name": "Get All Indicators In Stix2",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
@@ -186,7 +186,7 @@
           "uuid": "b69369cb-2e44-477c-b6da-acc86f014b2f",
           "collection": "/api/3/workflow_collections/6eac3557-d28f-439c-9a30-69d445d0fb25",
           "triggerLimit": null,
-          "description": "Retrieves list of all reports from Dragos based on various parameters such as sort by, serial and other parameters that you have specified.",
+          "description": "Retrieves a list of all reports from Dragos based on indicator value, type (IP, Domain, or Hostname), and other filter criteria that you have specified.",
           "name": "Get All Reports",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
@@ -351,7 +351,7 @@
           "uuid": "6eb04994-b29a-4484-b779-06cbfa0839ae",
           "collection": "/api/3/workflow_collections/6eac3557-d28f-439c-9a30-69d445d0fb25",
           "triggerLimit": null,
-          "description": "Retrieve indicators of report from Dragos based on report serial number.",
+          "description": "Retrieves indicators of the report from Dragos based on the report's serial number.",
           "name": "Get Indicators Of Report",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
@@ -433,7 +433,7 @@
           "uuid": "397a332e-ca4d-41d6-b06c-89bbff072437",
           "collection": "/api/3/workflow_collections/6eac3557-d28f-439c-9a30-69d445d0fb25",
           "triggerLimit": null,
-          "description": "Retrieves list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
+          "description": "Retrieves a list of all tags from Dragos based on various parameters such as page number, page size, and tag type that you have specified.",
           "name": "Get All Tags",
           "tag": "#Dragos WorldView Threat Intelligence",
           "recordTags": [
