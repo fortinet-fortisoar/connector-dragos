@@ -1,13 +1,13 @@
 {
   "name": "dragos-worldview-threat-intelligence",
   "label": "Dragos WorldView Threat Intelligence",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Dragos WorldView industrial threat intelligence provides actionable information and recommendations on threats to operations technology (OT) environments.",
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
   "category": "Threat Intelligence",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/dragos-worldview-threat-intelligence/470/dragos-worldview-threat-intelligence-v1-0-0",
+  "help_online": "",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "configuration": {
