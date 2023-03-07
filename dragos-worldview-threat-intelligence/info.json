@@ -7,7 +7,7 @@
   "cs_approved": true,
   "cs_compatible": true,
   "category": "Threat Intelligence",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/dragos-worldview-threat-intelligence/523/dragos-worldview-threat-intelligence-v1-1-0",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
   "ingestion_supported": true,
