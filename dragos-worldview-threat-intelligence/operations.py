@@ -96,10 +96,34 @@ def build_query(params, query_params):
         raise ConnectorError(str(e))
 
 
-def get_all_indicators(config, params):
+def get_indicators_response(config, params):
     query_params = build_query(params, indicator_params)
     endpoint = 'indicators' + (('?' + query_params) if query_params else '')
     return make_rest_call(config, endpoint)
+
+
+def get_all_indicators(config, params):
+    fetch_all_records = False
+    if not params.get("page") and not params.get("page_size"):
+        fetch_all_records = True
+    if fetch_all_records:
+        page = 1
+        indicators = list()
+        params.update({"page": page, "page_size": 1000})
+        response = get_indicators_response(config, params)
+        resp_indicators = response.get("indicators", [])
+        indicators += resp_indicators
+        while resp_indicators:
+            page += 1
+            params.update({"page": page, "page_size": 1000})
+            response = get_indicators_response(config, params)
+            resp_indicators = response.get("indicators", [])
+            indicators += resp_indicators
+        response.update({"indicators": indicators})
+        response.pop("page", None)
+    else:
+        response = get_indicators_response(config, params)
+    return response
 
 
 def get_all_indicators_in_stix2(config, params):
