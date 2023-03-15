@@ -107,18 +107,13 @@ def get_all_indicators(config, params):
     if not params.get("page") and not params.get("page_size"):
         fetch_all_records = True
     if fetch_all_records:
-        page = 1
-        indicators = list()
-        params.update({"page": page, "page_size": 1000})
-        response = get_indicators_response(config, params)
-        resp_indicators = response.get("indicators", [])
-        indicators += resp_indicators
+        page, indicators, resp_indicators = 1, list(), True
         while resp_indicators:
-            page += 1
-            params.update({"page": page, "page_size": 1000})
+            params.update({"page": page, "page_size": MAX_PAGE_SIZE})
             response = get_indicators_response(config, params)
             resp_indicators = response.get("indicators", [])
             indicators += resp_indicators
+            page += 1
         response.update({"indicators": indicators})
         response.pop("page", None)
     else:
