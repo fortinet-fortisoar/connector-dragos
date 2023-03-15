@@ -29,3 +29,5 @@ encode_keys = {'tags': 'tags%5B%5D', 'serial': 'serial%5B%5D', 'serials': 'seria
 indicator_params = ['page', 'page_size', 'updated_after', 'value', 'type', 'serial', 'tags']
 product_params = ['page', 'page_size', 'sort_by', 'sort_desc', 'updated_after', 'serials', 'indicator']
 tag_params = ['page', 'page_size', 'tag_type']
+
+MAX_PAGE_SIZE = 1000

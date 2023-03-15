@@ -105,28 +105,6 @@
           "tooltip": "Choose the type of indicator"
         },
         {
-          "title": "Page Size",
-          "description": "(Optional) Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
-          "tooltip": "Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "page_size",
-          "value": 500
-        },
-        {
-          "title": "Page Number",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "integer",
-          "name": "page",
-          "tooltip": "Default value: 1",
-          "value": 1,
-          "description": "(Optional) Specify the page number from which to retrieve the records. The default value is 1"
-        },
-        {
           "title": "Updated After",
           "tooltip": "Datetime from which you wish to retrieve indicators",
           "description": "(Optional) Specify the date and time after which to retrieve indicators. The DateTime must be in the ISO format (UTC).",
@@ -157,6 +135,47 @@
           "placeholder": "For e.g. tag1, tag2, ...",
           "tooltip": "Specify the list of tags for the indicators to search and retrieve.",
           "description": "(Optional) Specify the list of tags for the indicators to search and retrieve."
+        },
+        {
+          "title": "Number of Records to Return",
+          "description": "Select whether you want this operation to Fetch Limited Records or Fetch All Records. If you select Fetch Limited Records, then you must specify the following additional parameters: Limit: Maximum number of results that this operation should return. Offset: 1 based index of the page that this operation should return.",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Fetch All Records",
+            "Fetch Limited Records"
+          ],
+          "name": "record_number",
+          "value": "Fetch Limited Records",
+          "onchange": {
+            "Fetch All Records": [],
+            "Fetch Limited Records": [
+              {
+                "title": "Limit",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "integer",
+                "name": "page_size",
+                "value": 500,
+                "tooltip": "Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.",
+                "description": "Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500."
+              },
+              {
+                "title": "Offset",
+                "required": true,
+                "editable": true,
+                "visible": true,
+                "type": "integer",
+                "name": "page",
+                "value": 1,
+                "tooltip": "Specify the page number from which to retrieve the records. The default value is 1",
+                "description": "Specify the page number from which to retrieve the records. The default value is 1"
+              }
+            ]
+          }
         }
       ],
       "output_schema": {
