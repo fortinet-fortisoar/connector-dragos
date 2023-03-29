@@ -7,10 +7,10 @@
       "name": "Sample - Dragos WorldView Threat Intelligence - 1.1.0",
       "description": "Sample playbooks for \"Dragos WorldView Threat Intelligence\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": "/api/3/images/ca1e6162-8513-4c47-ae1c-a549eff1eaeb",
-      "id": 132,
-      "createDate": 1678692732.065246,
-      "modifyDate": 1678692732.065246,
+      "image": "/api/3/images/5a718e13-227e-4eb7-8f79-61e64dc7163e",
+      "id": 136,
+      "createDate": 1679988518.117214,
+      "modifyDate": 1679988518.117214,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -32,7 +32,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/5c81b4b9-964e-4ea3-b91f-954103761c56",
           "steps": [
@@ -104,7 +104,7 @@
           "groups": [],
           "priority": null,
           "uuid": "397a332e-ca4d-41d6-b06c-89bbff072437",
-          "id": 1335,
+          "id": 1464,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -128,7 +128,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": 1678800503,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d0242b47-734b-411e-91e5-60a36cc74deb",
           "steps": [
@@ -206,7 +206,7 @@
           "groups": [],
           "priority": null,
           "uuid": "61420583-b8ba-4de9-9ae2-2f4350d0fbc4",
-          "id": 1336,
+          "id": 1465,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -230,7 +230,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/104a6ce8-1113-4f79-b7ea-9a7daeae78db",
           "steps": [
@@ -301,7 +301,7 @@
           "groups": [],
           "priority": null,
           "uuid": "6eb04994-b29a-4484-b779-06cbfa0839ae",
-          "id": 1337,
+          "id": 1466,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -324,11 +324,38 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1678800328,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "lastModifyDate": 1680098523,
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/766d429f-02ab-4ec5-8e06-1b5d1a108195",
           "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Number of Records to Fetch",
+              "description": null,
+              "arguments": {
+                "conditions": [
+                  {
+                    "option": "Fetch Limited Records",
+                    "step_iri": "/api/3/workflow_steps/cd3493dc-641f-42a3-adb7-f2890a6a6d2f",
+                    "condition": "{{ vars.record_number == \"Fetch Limited Records\" }}",
+                    "step_name": "Fetch Indicators Limited"
+                  },
+                  {
+                    "option": "Fetch All Records",
+                    "default": true,
+                    "step_iri": "/api/3/workflow_steps/b9b5a64d-918a-49d9-abea-ebc2b117d9c2",
+                    "step_name": "Fetch Indicators"
+                  }
+                ]
+              },
+              "status": null,
+              "top": "440",
+              "left": "420",
+              "stepType": "/api/3/workflow_step_types/12254cf5-5db7-4b1a-8cb1-3af081924b28",
+              "group": null,
+              "uuid": "34e2fb66-5904-4281-9298-c68ec016e56f"
+            },
             {
               "@type": "WorkflowStep",
               "name": "Save Result",
@@ -338,8 +365,8 @@
                 "updated_last_pull_time": "{{vars.currentPullTime}}"
               },
               "status": null,
-              "top": "680",
-              "left": "920",
+              "top": "760",
+              "left": "1140",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "group": null,
               "uuid": "38d8df7a-8762-4b7e-b63f-c8ffb418e8db"
@@ -349,11 +376,11 @@
               "name": "Create Feed List",
               "description": null,
               "arguments": {
-                "fetched_data": "{{vars.steps.Fetch_Indicators.data}}"
+                "fetched_data": "{{vars.steps.Fetch_Indicators.data or vars.steps.Fetch_Indicators_Limited.data}}"
               },
               "status": null,
-              "top": "520",
-              "left": "600",
+              "top": "560",
+              "left": "820",
               "stepType": "/api/3/workflow_step_types/04d0cf46-b6a8-42c4-8683-60a7eaa69e8f",
               "group": null,
               "uuid": "5f72ddff-0b6c-43dd-8d26-d145453b243a"
@@ -404,7 +431,7 @@
                   "input": {
                     "params": []
                   },
-                  "_configuration_schema": "[\n  {\n    \"title\":\"Pull Sample Indicators in Past X Minutes\",\n    \"name\":\"fetch_data_in_last_X_minutes\",\n    \"type\":\"text\",\n    \"tooltip\":\"Pull the incidents in the past X minutes. e.g. 14400 minutes are 10 days.\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"value\":14400\n  },\n  {\n    \"title\":\"Reputation\",\n    \"name\":\"reputation\",\n    \"type\":\"select\",\n    \"tooltip\":\"Default Reputation to be set for the feeds\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"Good\",\n      \"Suspicious\",\n      \"Malicious\",\n      \"No Reputation Available\",\n      \"TBD\"\n    ],\n    \"value\":\"TBD\"\n  },\n  {\n    \"title\":\"TLP\",\n    \"name\":\"tlp\",\n    \"type\":\"select\",\n    \"tooltip\":\"Default TLP to be set for the feeds\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"Red\",\n      \"Amber\",\n      \"Green\",\n      \"White\"\n    ],\n    \"value\":\"Amber\"\n  },\n  {\n    \"title\":\"Indicator Type\",\n    \"name\":\"indicator_type_filter\",\n    \"type\":\"select\",\n    \"tooltip\":\"Type of indicator to be fetched.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"domain\",\n      \"filename\",\n      \"hostname\",\n      \"ip\",\n      \"md5\",\n      \"sha1\",\n      \"sha256\"\n    ]\n  },\n  {\n    \"title\":\"Report Serial Numbers\",\n    \"name\":\"report_serial_numbers\",\n    \"type\":\"text\",\n    \"tooltip\":\"Specify comma separated serial numbers of the report containing the indicators to retrieve.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true\n  },\n  {\n    \"title\":\"Tags\",\n    \"name\":\"tags\",\n    \"type\":\"text\",\n    \"tooltip\":\"Specify comma separated tags for the indicators to search and retrieve.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true\n  }\n]",
+                  "_configuration_schema": "[\n  {\n    \"title\":\"Pull Sample Indicators in Past X Minutes\",\n    \"name\":\"fetch_data_in_last_X_minutes\",\n    \"type\":\"text\",\n    \"tooltip\":\"Pull the incidents in the past X minutes. e.g. 14400 minutes are 10 days.\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"value\":14400\n  },\n  {\n    \"title\":\"Reputation\",\n    \"name\":\"reputation\",\n    \"type\":\"select\",\n    \"tooltip\":\"Default Reputation to be set for the feeds\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"Good\",\n      \"Suspicious\",\n      \"Malicious\",\n      \"No Reputation Available\",\n      \"TBD\"\n    ],\n    \"value\":\"TBD\"\n  },\n  {\n    \"title\":\"TLP\",\n    \"name\":\"tlp\",\n    \"type\":\"select\",\n    \"tooltip\":\"Default TLP to be set for the feeds\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"Red\",\n      \"Amber\",\n      \"Green\",\n      \"White\"\n    ],\n    \"value\":\"Amber\"\n  },\n  {\n    \"title\":\"Confidence Mapping\",\n    \"name\":\"confidence_map\",\n    \"type\":\"json\",\n    \"tooltip\":\"Specify the mapping of confidence.\",\n    \"required\":true,\n    \"editable\":true,\n    \"visible\":true,\n    \"value\":{\n      \"low\":25,\n      \"moderate\":50,\n      \"high\":75\n    }\n  },\n  {\n  \"title\": \"Number of Records to Return\",\n  \"name\": \"record_number\",\n  \"type\": \"select\",\n  \"visible\": true,\n  \"editable\": true,\n  \"required\": true,\n  \"options\": [\n    \"Fetch All Records\",\n    \"Fetch Limited Records\"\n  ],\n  \"onchange\": {\n    \"Fetch All Records\": [],\n    \"Fetch Limited Records\": [\n      {\n        \"title\": \"Limit\",\n        \"required\": true,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"integer\",\n        \"name\": \"page_size\",\n        \"value\": 1000,\n        \"tooltip\": \"Specify the count of records that the operation should include per page. Page size must be less than 1001. The default value is 500.\"\n      },\n      {\n        \"title\": \"Offset\",\n        \"required\": true,\n        \"editable\": true,\n        \"visible\": true,\n        \"type\": \"integer\",\n        \"name\": \"page_number\",\n        \"value\": 1,\n        \"tooltip\": \"Specify the page number from which to retrieve the records. The default value is 1\"\n      }\n    ]\n  }\n},\n  {\n    \"title\":\"Indicator Type\",\n    \"name\":\"indicator_type_filter\",\n    \"type\":\"select\",\n    \"tooltip\":\"Type of indicator to be fetched.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true,\n    \"options\":[\n      \"domain\",\n      \"filename\",\n      \"hostname\",\n      \"ip\",\n      \"md5\",\n      \"sha1\",\n      \"sha256\"\n    ]\n  },\n  {\n    \"title\":\"Report Serial Numbers\",\n    \"name\":\"report_serial_numbers\",\n    \"type\":\"text\",\n    \"tooltip\":\"Specify comma separated serial numbers of the report containing the indicators to retrieve.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true\n  },\n  {\n    \"title\":\"Tags\",\n    \"name\":\"tags\",\n    \"type\":\"text\",\n    \"tooltip\":\"Specify comma separated tags for the indicators to search and retrieve.\",\n    \"required\":false,\n    \"editable\":true,\n    \"visible\":true\n  }\n]",
                   "DragosLastAlertPullTime": "DragosAlertPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}"
                 }
               },
@@ -421,6 +448,7 @@
               "description": null,
               "arguments": {
                 "tlp_resolved": "{{vars.tlp | resolveRange(vars.tlp_map)}}",
+                "confidence_map": "{{vars.confidence_map}}",
                 "last_pull_time": "{% if (vars.steps.Get_Macro_Value.data[\"hydra:member\"] | length) > 0%}{{vars.steps.Get_Macro_Value.data[\"hydra:member\"][0].value }}{% else %}{{arrow.utcnow().shift(minutes=-vars.fetch_data_in_last_X_minutes).int_timestamp}}{% endif %}",
                 "reputation_resolved": "{{vars.reputation | resolveRange(vars.reputation_map)}}"
               },
@@ -468,8 +496,8 @@
                 "step_variables": []
               },
               "status": null,
-              "top": "600",
-              "left": "760",
+              "top": "660",
+              "left": "980",
               "stepType": "/api/3/workflow_step_types/2597053c-e718-44b4-8394-4d40fe26d357",
               "group": null,
               "uuid": "93050a6e-c520-48bb-8dd4-d2b26cb1fbbf"
@@ -497,11 +525,42 @@
                 "step_variables": []
               },
               "status": null,
-              "top": "440",
-              "left": "440",
+              "top": "560",
+              "left": "420",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
               "uuid": "b9b5a64d-918a-49d9-abea-ebc2b117d9c2"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Fetch Indicators Limited",
+              "description": null,
+              "arguments": {
+                "name": "Dragos WorldView Threat Intelligence",
+                "config": "7baca7ac-d957-4c45-9078-e3e141c43a85",
+                "params": {
+                  "page": "{{vars.page_number}}",
+                  "tags": "{{vars.tags}}",
+                  "type": "{{vars.indicator_type_filter}}",
+                  "value": "",
+                  "serial": "{{vars.report_serial_numbers}}",
+                  "page_size": "{{vars.page_size}}",
+                  "record_number": "Fetch Limited Records",
+                  "updated_after": "{{vars.last_pull_time}}"
+                },
+                "version": "1.1.0",
+                "connector": "dragos-worldview-threat-intelligence",
+                "operation": "get_all_indicators",
+                "operationTitle": "Get All Indicators",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "440",
+              "left": "820",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "cd3493dc-641f-42a3-adb7-f2890a6a6d2f"
             },
             {
               "@type": "WorkflowStep",
@@ -511,12 +570,13 @@
                 "tlp": "Amber",
                 "tags": "",
                 "tlp_map": "{'Red': {{'TrafficLightProtocol'| picklist('Red') }}, 'Amber': {{'TrafficLightProtocol'| picklist('Amber') }}, 'Green': {{'TrafficLightProtocol'| picklist('Green') }}, 'White': {{'TrafficLightProtocol'| picklist('White') }}}",
-                "page_size": "500",
+                "page_size": "1000",
                 "reputation": "TBD",
                 "output_mode": "Return as a JSON",
                 "page_number": "1",
                 "pullTimeMacro": "DragosLastPullTime_{{vars['audit_info']['cyops_playbook_iri'].split('/')[-1].replace('-','_')}}",
-                "confidence_map": "{\n    'low': 25,\n    'medium': 50,\n    'high': 75\n}",
+                "record_number": "Fetch All Records",
+                "confidence_map": "{\n    \"low\":25,\n    \"moderate\":50,\n    \"high\":75\n}",
                 "kill_chain_map": "{\n    \"Stage1:Reconnaissance\": \"{{\"KillChainPhases\" | picklist(\"Reconnaissance\", \"@id\")}}\",\n    \"Stage1:Weaponization\": \"{{\"KillChainPhases\" | picklist(\"Weaponization\", \"@id\")}}\",\n    \"Stage1:Delivery\": \"{{\"KillChainPhases\" | picklist(\"Delivery\", \"@id\")}}\",\n    \"Stage1:Exploitation\": \"{{\"KillChainPhases\" | picklist(\"Exploitation\", \"@id\")}}\",\n    \"Stage1:Installation\": \"{{\"KillChainPhases\" | picklist(\"Installation\", \"@id\")}}\",\n    \"Stage1:Command&Control\": \"{{\"KillChainPhases\" | picklist(\"Command & Control\", \"@id\")}}\",\n    \"Stage1:ActionsOnObjectives\":\"{{\"KillChainPhases\" | picklist(\"Actions on Objectives\", \"@id\")}}\" \n}",
                 "reputation_map": "{'Good': {{'IndicatorReputation'| picklist('Good') }}, 'Malicious': {{'IndicatorReputation'| picklist('Malicious') }}, 'Suspicious': {{'IndicatorReputation'| picklist('Suspicious') }}, 'TBD': {{'IndicatorReputation'| picklist('TBD') }}, 'No Reputation Available': {{'IndicatorReputation' | picklist('No Reputation Available') }}}",
                 "currentPullTime": "{{arrow.utcnow().int_timestamp}}",
@@ -547,8 +607,8 @@
                   {
                     "option": "No, For Ingestion",
                     "default": true,
-                    "step_iri": "/api/3/workflow_steps/b9b5a64d-918a-49d9-abea-ebc2b117d9c2",
-                    "step_name": "Fetch Indicators"
+                    "step_iri": "/api/3/workflow_steps/34e2fb66-5904-4281-9298-c68ec016e56f",
+                    "step_name": "Number of Records to Fetch"
                   }
                 ]
               },
@@ -563,21 +623,39 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
+              "name": "Fetch Indicators Limited -> Create Feed List",
+              "targetStep": "/api/3/workflow_steps/5f72ddff-0b6c-43dd-8d26-d145453b243a",
+              "sourceStep": "/api/3/workflow_steps/cd3493dc-641f-42a3-adb7-f2890a6a6d2f",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f1a6420c-1e32-4b3f-b1ce-d36a78f0cf69"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Is data only for mapping -> Number of Records to Fetch",
+              "targetStep": "/api/3/workflow_steps/34e2fb66-5904-4281-9298-c68ec016e56f",
+              "sourceStep": "/api/3/workflow_steps/edfd609e-a13f-4f7f-91b2-dde8f3e5cd6e",
+              "label": "No, For Ingestion",
+              "isExecuted": false,
+              "uuid": "d0f85e73-d3ce-451f-8364-370d0b1d8794"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Number of Records to Fetch -> Fetch Indicators Limited",
+              "targetStep": "/api/3/workflow_steps/cd3493dc-641f-42a3-adb7-f2890a6a6d2f",
+              "sourceStep": "/api/3/workflow_steps/34e2fb66-5904-4281-9298-c68ec016e56f",
+              "label": "Fetch Limited Records",
+              "isExecuted": false,
+              "uuid": "4c588721-f412-421f-8e58-6819fc3129f8"
+            },
+            {
+              "@type": "WorkflowRoute",
               "name": "Start -> Configuration",
               "targetStep": "/api/3/workflow_steps/e8eed30b-cdd4-4a57-b58e-682662921b40",
               "sourceStep": "/api/3/workflow_steps/766d429f-02ab-4ec5-8e06-1b5d1a108195",
               "label": null,
               "isExecuted": false,
               "uuid": "3d2aedf1-ea31-44dc-a8a5-8099f1c6ca3d"
-            },
-            {
-              "@type": "WorkflowRoute",
-              "name": "Is data only for mapping -> Fetch Indicators",
-              "targetStep": "/api/3/workflow_steps/b9b5a64d-918a-49d9-abea-ebc2b117d9c2",
-              "sourceStep": "/api/3/workflow_steps/edfd609e-a13f-4f7f-91b2-dde8f3e5cd6e",
-              "label": "No, For Ingestion",
-              "isExecuted": false,
-              "uuid": "47e0adb6-2e90-4a8d-b133-7f82965a3d44"
             },
             {
               "@type": "WorkflowRoute",
@@ -641,12 +719,21 @@
               "label": null,
               "isExecuted": false,
               "uuid": "e1bd2fb6-d300-42ae-8965-8bbdf5b705e8"
+            },
+            {
+              "@type": "WorkflowRoute",
+              "name": "Number of Records to Fetch -> Fetch Indicators",
+              "targetStep": "/api/3/workflow_steps/b9b5a64d-918a-49d9-abea-ebc2b117d9c2",
+              "sourceStep": "/api/3/workflow_steps/34e2fb66-5904-4281-9298-c68ec016e56f",
+              "label": "Fetch All Records",
+              "isExecuted": false,
+              "uuid": "d6657dcc-cc3f-4ad2-bf69-77be15f927e7"
             }
           ],
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "94504a44-82a2-4d5d-a7cd-28ed237fc621",
-          "id": 1338,
+          "id": 1467,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -673,7 +760,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d58d8f8b-fe34-481e-81b8-6d23d23fb459",
           "steps": [
@@ -742,7 +829,7 @@
           "groups": [],
           "priority": null,
           "uuid": "9e9eebc7-7703-4026-931d-e5a2d0f91b12",
-          "id": 1339,
+          "id": 1468,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -766,7 +853,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": 1677162412,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/ada139df-18d8-44ae-8632-8b52852d5e3e",
           "steps": [
@@ -853,7 +940,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "b5e45de3-422a-41f3-bb6d-0aab2363377b",
-          "id": 1340,
+          "id": 1469,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -879,7 +966,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": 1677223441,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/4180f6bd-bc55-47c7-9698-c01b72ede8d7",
           "steps": [
@@ -956,7 +1043,7 @@
           "groups": [],
           "priority": null,
           "uuid": "b69369cb-2e44-477c-b6da-acc86f014b2f",
-          "id": 1341,
+          "id": 1470,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -980,7 +1067,7 @@
           "parameters": [],
           "synchronous": false,
           "lastModifyDate": null,
-          "collection": "/api/3/workflow_collections/f8623390-6dea-4685-9ab5-beb6db61e409",
+          "collection": "/api/3/workflow_collections/f53fabae-b364-4dc3-8c2f-fe70e02e34c9",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/573831bd-a288-4fe0-9654-75d683d77ac7",
           "steps": [
@@ -1053,7 +1140,7 @@
           "groups": [],
           "priority": null,
           "uuid": "c34ba7c9-bf60-4b2c-a44c-769dedcbe0e1",
-          "id": 1342,
+          "id": 1471,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
